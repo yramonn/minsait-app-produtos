@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/produtos") //http://localhost:8080/api/produtos
+@RequestMapping("/api/produtos")
 public class ProdutoResource {
 
     private ProdutoService produtoService;
@@ -38,15 +38,15 @@ public class ProdutoResource {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> save(@RequestBody Produto produto){
+    public ResponseEntity<Produto> saveProduto(@RequestBody Produto produto){
         Produto newProduto = produtoService.save(produto);
         if(newProduto == null)
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(newProduto);
     }
 
-    @PutMapping
-    public ResponseEntity<Produto> update(@RequestBody Produto produto){
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> updateProduto(@RequestBody Produto produto){
         Produto newProduto = produtoService.update(produto);
         if(newProduto == null)
             return ResponseEntity.notFound().build();
@@ -54,7 +54,7 @@ public class ProdutoResource {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
+    public ResponseEntity<?> deleteProduto(@PathVariable Long id){
         produtoService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

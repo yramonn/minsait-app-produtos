@@ -18,7 +18,6 @@ public class Estoque {
 	@Column(nullable = false)
 	private Integer quantidade;
 
-	//construtores:
 	public Estoque() {}
 
 	public Estoque(Long id, Produto produto, Integer quantidade) {
