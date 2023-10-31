@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "minsaitFrontEndProdutos"
+    }
+  },
+  "defaultProject": "minsaitFrontEndProdutos",
+  "cli": {
+    "analytics": "05406163-046b-4bf5-ac64-7e414e004f23"
+  }
 }
