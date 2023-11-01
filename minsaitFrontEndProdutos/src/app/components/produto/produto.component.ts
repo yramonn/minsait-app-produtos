@@ -6,6 +6,8 @@ import {ProdutoService} from '../../produto.service';
 import {FormControl, FormGroup} from '@angular/forms';
 // @ts-ignore
 import { Validators, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -19,7 +21,6 @@ export class ProdutoComponent implements OnInit {
   tituloForm: string;
   produtos: Produto[];
   nomeProduto: string;
-  // produtoId: number;
   id: number;
 
 
@@ -71,7 +72,7 @@ export class ProdutoComponent implements OnInit {
       this.produtoService.updateProdutos(produto).subscribe((resultado) => {
         this.showForm = false;
         this.showTabela = true;
-        alert('Produto atualizado com sucesso');
+        Swal.fire('Sucesso!', 'Produto atualizado com sucesso!', 'success');
         this.produtoService.getAllProdutos().subscribe((registros) => {
           this.produtos = registros;
         });
@@ -80,7 +81,7 @@ export class ProdutoComponent implements OnInit {
       this.produtoService.saveprodutos(produto).subscribe((resultado) => {
         this.showForm = false;
         this.showTabela = true;
-        alert('Produto inserido com sucesso');
+        Swal.fire('Sucesso!', 'Novo Produto criado com sucesso!', 'success');
         this.produtoService.getAllProdutos().subscribe((registros) => {
           this.produtos = registros;
         });

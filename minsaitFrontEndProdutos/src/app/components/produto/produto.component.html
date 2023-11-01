@@ -1,19 +1,19 @@
 <div class="container p-5" *ngIf="showTabela">
   <div class="border boder-light rounded p-5">
     <div>
-      <button type="button" class="btn btn-sm btn-secondary" (click)="CadastroProdutoForm()">
+      <button type="button" class="btn btn-sm btn-primary" (click)="CadastroProdutoForm()">
         Novo Produto
       </button>
     </div>
 
-    <hr />
+    <hr/>
 
-    <table class="table table-striped table-hover table-sm" *ngIf="produtos">
+    <table class="table table-bordered table-hover table-sm" *ngIf="produtos">
       <tr class="thead-light">
-        <th>Nome</th>
-        <th>Código de Barras</th>
-        <th>Preço</th>
-        <th>Ações</th>
+        <th class="text-center">Nome</th>
+        <th class="text-center">Código de Barras</th>
+        <th class="text-center">Preço</th>
+        <th class="text-center">Ações</th>
       </tr>
 
       <tr *ngFor="let produto of produtos">
@@ -24,7 +24,8 @@
           <button type="button" class="btn btn-sm btn-outline-info" (click)="AtualizarProdutoForm(produto.id)">
             Atualizar
           </button>
-          <button type="button" class="btn btn-sm btn-outline-danger" (click)="ConfirmarDeletarProduto(produto.id, produto.nome, conteudoModal)">
+          <button type="button" class="btn btn-sm btn-outline-danger"
+                  (click)="ConfirmarDeletarProduto(produto.id, produto.nome, conteudoModal)">
             Excluir
           </button>
         </td>
@@ -37,7 +38,7 @@
   <div class="row">
     <div class="col-6 border boder-light rounded p-5 shadow" *ngIf="form">
       <h6>{{ tituloForm }}</h6>
-      <hr />
+      <hr/>
 
       <form [formGroup]="form" (ngSubmit)="EnviarProdutoForm()">
         <div class="form-group">
@@ -62,9 +63,14 @@
             formControlName="codigoBarras"
           />
         </div>
-        <div *ngIf="form.get('codigoBarras').errors && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)">
-          <div *ngIf="form.get('codigoBarras').hasError('minlength')">Código de Barras deve ter pelo menos 3 caracteres.</div>
-          <div *ngIf="form.get('codigoBarras').hasError('maxlength')">Código de Barras não pode ter mais de 50 caracteres.</div>
+        <div
+          *ngIf="form.get('codigoBarras').errors && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)">
+          <div *ngIf="form.get('codigoBarras').hasError('minlength')">Código de Barras deve ter pelo menos 3
+            caracteres.
+          </div>
+          <div *ngIf="form.get('codigoBarras').hasError('maxlength')">Código de Barras não pode ter mais de 50
+            caracteres.
+          </div>
         </div>
 
         <div class="form-group">
@@ -83,12 +89,12 @@
         <div class="container">
           <div class="row">
             <div>
-              <button type="submit" class="btn btn-sm btn-outline-secondary">
+              <button type="submit" class="btn btn-sm btn-primary">
                 Salvar
               </button>
             </div>
             <div class="pl-1">
-              <button type="button" class="btn btn-sm btn-light" (click)="Voltar()">Voltar</button>
+              <button type="button" class="btn btn-sm btn-secondary" (click)="Voltar()">Voltar</button>
             </div>
           </div>
         </div>
