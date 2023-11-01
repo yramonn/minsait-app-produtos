@@ -47,6 +47,11 @@
             class="form-control form-control-sm"
             formControlName="nome"
           />
+          <div *ngIf="form.get('nome').errors && (form.get('nome').dirty || form.get('nome').touched)">
+            <div *ngIf="form.get('nome').hasError('required')">Nome é obrigatório.</div>
+            <div *ngIf="form.get('nome').hasError('minlength')">Nome deve ter pelo menos 3 caracteres.</div>
+            <div *ngIf="form.get('nome').hasError('maxlength')">Nome não pode ter mais de 50 caracteres.</div>
+          </div>
         </div>
 
         <div class="form-group">
@@ -57,6 +62,10 @@
             formControlName="codigoBarras"
           />
         </div>
+        <div *ngIf="form.get('codigoBarras').errors && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)">
+          <div *ngIf="form.get('codigoBarras').hasError('minlength')">Código de Barras deve ter pelo menos 3 caracteres.</div>
+          <div *ngIf="form.get('codigoBarras').hasError('maxlength')">Código de Barras não pode ter mais de 50 caracteres.</div>
+        </div>
 
         <div class="form-group">
           <label>Preço</label>
@@ -65,6 +74,10 @@
             class="form-control form-control-sm"
             formControlName="preco"
           />
+          <div *ngIf="form.get('preco').errors && (form.get('preco').dirty || form.get('preco').touched)">
+            <div *ngIf="form.get('preco').hasError('required')">Preço é obrigatório.</div>
+            <div *ngIf="form.get('preco').hasError('min')">Preço deve ser maior ou igual a 0.</div>
+          </div>
         </div>
 
         <div class="container">
@@ -97,6 +110,6 @@
 
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="modalRef.hide()">Não</button>
-    <button type="button" class="btn btn-outline-danger" (click)="DeletarProduto(produtoId)">Sim</button>
+    <button type="button" class="btn btn-outline-danger" (click)="DeletarProduto(id)">Sim</button>
   </div>
 </ng-template>

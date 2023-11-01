@@ -2,7 +2,11 @@ import {Component, OnInit, TemplateRef} from '@angular/core';
 import {Produto} from '../../model/Produto';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {ProdutoService} from '../../produto.service';
+// @ts-ignore
 import {FormControl, FormGroup} from '@angular/forms';
+// @ts-ignore
+import { Validators, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-produto',
@@ -38,9 +42,9 @@ export class ProdutoComponent implements OnInit {
     this.showForm = true;
     this.tituloForm = 'Novo Produto';
     this.form = new FormGroup({
-      nome: new FormControl(null),
-      codigoBarras: new FormControl(null),
-      preco: new FormControl(null),
+      nome: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      codigoBarras: new FormControl(null, [Validators.minLength(3), Validators.maxLength(50)]),
+      preco: new FormControl(null, [Validators.required, Validators.min(0)]),
     });
   }
 
