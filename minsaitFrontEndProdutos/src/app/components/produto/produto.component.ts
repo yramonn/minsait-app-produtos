@@ -104,7 +104,7 @@ export class ProdutoComponent implements OnInit {
   DeletarProduto(id){
     this.produtoService.deleteProdutos(id).subscribe(resultado => {
       this.modalRef.hide();
-      alert('Produto excluída com sucesso');
+      Swal.fire('Sucesso!', ' Produto excluído com sucesso!', 'success');
       this.produtoService.getAllProdutos().subscribe(registros => {
         this.produtos = registros;
       });

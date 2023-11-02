@@ -76,12 +76,15 @@
         <div class="form-group">
           <label>Preço</label>
           <input
-            type="number"
+            type="text"
             class="form-control form-control-sm"
             formControlName="preco"
+            pattern="^[0-9]+([,.][0-9]+)?$"
+            formatMoney
           />
           <div *ngIf="form.get('preco').errors && (form.get('preco').dirty || form.get('preco').touched)">
             <div *ngIf="form.get('preco').hasError('required')">Preço é obrigatório.</div>
+            <div *ngIf="form.get('preco').hasError('pattern')">Preço deve ser um número válido.</div>
             <div *ngIf="form.get('preco').hasError('min')">Preço deve ser maior ou igual a 0.</div>
           </div>
         </div>

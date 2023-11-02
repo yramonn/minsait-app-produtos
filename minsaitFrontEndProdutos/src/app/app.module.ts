@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppComponent } from './app.component';
+import {MoneyFormatDirective} from './money-format.directive';
 
 import {ProdutoService} from './produto.service';
 import { ProdutoComponent } from './components/produto/produto.component';
@@ -13,7 +14,8 @@ import {AppRoutingModule} from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    MoneyFormatDirective
   ],
   imports: [
     BrowserModule,
