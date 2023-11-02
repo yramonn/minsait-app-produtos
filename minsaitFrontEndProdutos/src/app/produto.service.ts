@@ -27,16 +27,16 @@ export class ProdutoService {
     return this.http.get<Produto>(apiUrl);
   }
 
-  saveprodutos(produto: Produto): Observable<any> {
+  saveprodutos(produto: Produto): Observable<Produto> {
     return this.http.post<Produto>(this.url, produto, httpOptions);
   }
 
-  updateProdutos(produto: Produto): Observable<any> {
+  updateProdutos(produto: Produto): Observable<Produto> {
     const apiUrl = `${this.url}/${produto.id}`;
     return this.http.put<Produto>(apiUrl, produto, httpOptions);
   }
 
-  deleteProdutos(produtoId: number): Observable<any> {
+  deleteProdutos(produtoId: number): Observable<number> {
     const apiUrl = `${this.url}/${produtoId}`;
     return this.http.delete<number>(apiUrl, httpOptions);
   }

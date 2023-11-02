@@ -11,7 +11,7 @@
     <table class="table table-bordered table-hover table-sm" *ngIf="produtos">
       <tr class="thead-light">
         <th class="text-center">Nome</th>
-        <th class="text-center">Código de Barras</th>
+        <th class="text-center">Código de Barras (EAN-13)</th>
         <th class="text-center">Preço</th>
         <th class="text-center">Ações</th>
       </tr>
@@ -47,8 +47,13 @@
             type="text"
             class="form-control form-control-sm"
             formControlName="nome"
+            required
+            minlength="3"
+            maxlength="50"
+            [class.is-invalid]="form.get('nome').invalid && (form.get('nome').dirty || form.get('nome').touched)"
+            [class.is-valid]="form.get('nome').valid && (form.get('nome').dirty || form.get('nome').touched)"
           />
-          <div *ngIf="form.get('nome').errors && (form.get('nome').dirty || form.get('nome').touched)">
+          <div class="error-message" *ngIf="form.get('nome').errors && (form.get('nome').dirty || form.get('nome').touched)">
             <div *ngIf="form.get('nome').hasError('required')">Nome é obrigatório.</div>
             <div *ngIf="form.get('nome').hasError('minlength')">Nome deve ter pelo menos 3 caracteres.</div>
             <div *ngIf="form.get('nome').hasError('maxlength')">Nome não pode ter mais de 50 caracteres.</div>
@@ -61,10 +66,18 @@
             type="text"
             class="form-control form-control-sm"
             formControlName="codigoBarras"
+            formatCodigoBarras
+            required
+            minlength="3"
+            maxlength="50"
+            [class.is-invalid]="form.get('codigoBarras').invalid && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)"
+            [class.is-valid]="form.get('codigoBarras').valid && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)"
           />
         </div>
-        <div
-          *ngIf="form.get('codigoBarras').errors && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)">
+        <div class="error-message"
+          *ngIf="form.get('codigoBarras').invalid && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)">
+          <div *ngIf="form.get('codigoBarras').hasError('required')">Código de Barras é obrigatório.
+          </div>
           <div *ngIf="form.get('codigoBarras').hasError('minlength')">Código de Barras deve ter pelo menos 3
             caracteres.
           </div>
@@ -79,10 +92,12 @@
             type="text"
             class="form-control form-control-sm"
             formControlName="preco"
-            pattern="^[0-9]+([,.][0-9]+)?$"
+            pattern="^[0-9]{1,3}(?:[.,][0-9]{3})*(?:[.,][0-9]{2})?$"
             formatMoney
+            [class.is-invalid]="form.get('preco').invalid && (form.get('preco').dirty || form.get('preco').touched)"
+            [class.is-valid]="form.get('preco').valid && (form.get('preco').dirty || form.get('preco').touched)"
           />
-          <div *ngIf="form.get('preco').errors && (form.get('preco').dirty || form.get('preco').touched)">
+          <div class="error-message" *ngIf="form.get('preco').errors && (form.get('preco').dirty || form.get('preco').touched)">
             <div *ngIf="form.get('preco').hasError('required')">Preço é obrigatório.</div>
             <div *ngIf="form.get('preco').hasError('pattern')">Preço deve ser um número válido.</div>
             <div *ngIf="form.get('preco').hasError('min')">Preço deve ser maior ou igual a 0.</div>

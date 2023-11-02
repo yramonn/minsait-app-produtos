@@ -6,6 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppComponent } from './app.component';
 import {MoneyFormatDirective} from './money-format.directive';
+import {CodigobarrasFormatDirective} from './codigobarras-format.directive';
 
 import {ProdutoService} from './produto.service';
 import { ProdutoComponent } from './components/produto/produto.component';
@@ -15,7 +16,8 @@ import {AppRoutingModule} from './app-routing.module';
   declarations: [
     AppComponent,
     ProdutoComponent,
-    MoneyFormatDirective
+    MoneyFormatDirective,
+    CodigobarrasFormatDirective
   ],
   imports: [
     BrowserModule,

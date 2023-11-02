@@ -6,3 +6,8 @@
   background-color: #f8f9fa;
 }
 
+.error-message {
+  color: red;
+  font-size: 14px;
+
+}
