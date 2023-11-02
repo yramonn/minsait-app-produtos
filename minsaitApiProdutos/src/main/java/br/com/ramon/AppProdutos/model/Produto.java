@@ -1,14 +1,15 @@
 package br.com.ramon.AppProdutos.model;
 
+import br.com.ramon.AppProdutos.config.CustomDoubleDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
 @Table
 public class Produto {
 
-	//atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,11 +21,11 @@ public class Produto {
 	private String nome;
 
 	@Column(nullable = false)
-	private BigDecimal preco;
+	@JsonDeserialize(using = CustomDoubleDeserializer.class)
+	private double preco;
 
-	//Construtores
 	public Produto() {}
-	public Produto(Long id, String codigoBarras, BigDecimal preco, String nome) {
+	public Produto(Long id, String codigoBarras, double preco, String nome) {
 		this.id = id;
 		this.codigoBarras = codigoBarras;
 		this.preco = preco;
@@ -49,10 +50,10 @@ public class Produto {
 	public void setCodigoBarras(String codigoBarras) {
 		this.codigoBarras = codigoBarras;
 	}
-	public BigDecimal getPreco() {
+	public double getPreco() {
 		return preco;
 	}
-	public void setPreco(BigDecimal preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 

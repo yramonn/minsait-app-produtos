@@ -10,7 +10,7 @@ public class CustomDoubleDeserializer extends JsonDeserializer<Double> {
 
     @Override
     public Double deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        String value = jsonParser.getValueAsString().replace(",", ".");
+        String value = jsonParser.getValueAsString().replaceAll("\\.", "").replace(",", ".");
         return Double.parseDouble(value);
     }
 }
