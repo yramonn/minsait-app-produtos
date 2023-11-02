@@ -22,7 +22,7 @@
         <td>{{ produto.preco }}</td>
         <td>
           <button type="button" class="btn btn-sm btn-outline-info" (click)="AtualizarProdutoForm(produto.id)">
-            Atualizar
+            Editar
           </button>
           <button type="button" class="btn btn-sm btn-outline-danger"
                   (click)="ConfirmarDeletarProduto(produto.id, produto.nome, conteudoModal)">
@@ -68,7 +68,7 @@
             formControlName="codigoBarras"
             formatCodigoBarras
             required
-            minlength="3"
+            minlength="13"
             maxlength="50"
             [class.is-invalid]="form.get('codigoBarras').invalid && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)"
             [class.is-valid]="form.get('codigoBarras').valid && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)"
@@ -78,7 +78,7 @@
           *ngIf="form.get('codigoBarras').invalid && (form.get('codigoBarras').dirty || form.get('codigoBarras').touched)">
           <div *ngIf="form.get('codigoBarras').hasError('required')">Código de Barras é obrigatório.
           </div>
-          <div *ngIf="form.get('codigoBarras').hasError('minlength')">Código de Barras deve ter pelo menos 3
+          <div *ngIf="form.get('codigoBarras').hasError('minlength')">Código de Barras deve ter pelo menos 13
             caracteres.
           </div>
           <div *ngIf="form.get('codigoBarras').hasError('maxlength')">Código de Barras não pode ter mais de 50
