@@ -8,9 +8,9 @@ https://www.youtube.com/watch?v=iJHq7tAHTE4&t=1s
 
 # Tecnologias utilizadas - FRONT END
 
-Angular: 10.1.6
-Node: 14.15.5
-Typescript: Version 4.0.8
+- Angular: 10.1.6
+- Node: 14.15.5
+- Typescript: Version 4.0.8
 
 
 # Tecnologias utilizadas - BACK END
